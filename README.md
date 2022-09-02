@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-structure from: https://github.com/yngvem/python-project-structure
 
 Install the project as ```pip install -e <path-to-rootDir>```
 
@@ -13,5 +11,4 @@ For **documentation** I use the [google style](https://stackoverflow.com/questio
 =======
 # recombpy
  
-test
->>>>>>> c7faa0fdfe1ac8fd40ba0fa4dcfd204c51cb4daf
+from macbook 13
