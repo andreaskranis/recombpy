@@ -127,6 +127,7 @@ USAGE
     parser.add_argument("-m", "--snpmap", dest="snpmap", required=True, help="snp tsv file with columns \"chrom\", \"snpid\", \"cm\", \"pos\" where chrom is an integer")
     parser.add_argument("-i", "--inputs", dest="inputs", required=True, help="phase input file/s", nargs='+')
     parser.add_argument("-o", "--output", dest="output", required=True, help="output directory")
+    parser.add_argument("-p", "--paternalfirst", dest="paternalfirst", required=False, default=False, action='store_true', help="input phased data is paternal first? [default assumes maternal first]")
     parser.add_argument("-p", "--pedigree", dest="pedigree_file", required=True, help="pedigree input file for triplets in crossover detection")
     parser.add_argument("-e", "--exclusions", dest="exclusions", required=False, default=None, help="kid id exclusions")
     parser.add_argument("-f", "--flankmin", dest="min_flank_phase", nargs='+', required=False, type=int, default=[0], help="")
@@ -142,6 +143,7 @@ USAGE
     min_flank_phase = args.min_flank_phase
     pedigree = PedigreeDAG.from_file(pedigree_file)
     exclusions = args.exclusions
+    paternal_first = args.paternalfirst
     
     print("min_flank_phase %s" % min_flank_phase)
     
@@ -168,7 +170,7 @@ USAGE
         else:
             print("Reading haplotype subject: %s" % subject_file)
             gens_subject = importers.read_real_haplos(subject_file, 
-                           genome, first_haplo='m',
+                           genome, first_haplo = 'p' if paternal_first else'm',
                            mv=9, sep=' ', header=False, random_assign_missing=False)
             dumpToPickle(subject_pickle_file, gens_subject)
         #only evaluate kids in reference
