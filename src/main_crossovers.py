@@ -35,7 +35,7 @@ import seaborn as sns
 from quickgsim import importers
 from matplotlib import rcParams
 
-
+import quickgsim
 
 from utils import xoverutils
 from pedigree.pedigree_dag import PedigreeDAG
@@ -56,7 +56,7 @@ PROFILE = 0
 
 
 def importGenome(snpmap):
-    genomein = pd.read_csv(snpmap, sep=' ', names = ["chrom", "snpid", "cm", "pos"])
+    genomein = pd.read_csv(snpmap, sep=' ', names = ["chrom", "snpid", "cm", "pos"], comment="#")
         
     chromosome2snp = defaultdict(set)
     #chromosomes = set([row["chrom"] for index, row in genomein.iterrows()])
