@@ -174,9 +174,6 @@ USAGE
         #only evaluate kids in reference
         gens_subject = {k:v for k,v in gens_subject.items()}
         subject_file_obj[Path(subject_file).name] = gens_subject
-        print("mat %s gens_subject %s" % (0,gens_subject[4004165532145][1][0][0:9]))
-        print("pat %s gens_subject %s" % (1,gens_subject[4004165532145][1][1][0:9]))
-        
     
     for min_flank_errtolerance in min_flank_phase :
         print(min_flank_errtolerance)
